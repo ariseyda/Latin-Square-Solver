@@ -2,7 +2,7 @@
 
 /*Latin Square Solver
 Question 2 of 4
-You are given a two-dimensional n × n integer matrix containing integers from 0 to n. 
+You are given a two-dimensional n Ã— n integer matrix containing integers from 0 to n. 
 Assuming that 0 represents an unfilled square, return whether you can fill empty squares such that in each row and each column every number from 1 to n appears exactly once.
 
 Constraints
@@ -39,7 +39,7 @@ int main(){
 	printf("Enter n:");
 	scanf("%d",&n);
 	
-	printf("Enter a two-dimensional n × n integer matrix containing integers from 0 to n:\n");
+	printf("Enter a two-dimensional n Ã— n integer matrix containing integers from 0 to n:\n");
 	
 	int matrix[n][n];
 	
@@ -70,7 +70,7 @@ int main(){
 	
 	
 	
-	int k,count=0;
+	int k,count=0,a=n;
 	for(i=0;i<n;i++){
 		for(j=0;j<n-1;j++){
 		  if(matrix[i][j]!=0&&matrix[i][j]==matrix[i][j+1]){
@@ -87,7 +87,51 @@ int main(){
 		printf("\nFALSE");
 	}
 	else{
+		
+		for(i=0;i<n;i++){
+	     	for(j=0;j<n;j++){
+	     	  if(matrix[i][j]==0){
+	     	     matrix[i][j]=n;
+	     		for(k=0;k<n;k++){
+	     		   if(j==k){
+	     		  	k++;
+			}
+	     		  if(n==matrix[i][k]){
+	     		  		
+	     		  	n--;
+	     		  	matrix[i][j]=n;
+			   }
+		   }		
+			  
+			  n=a;
+	     		  
+	     			
+	     		
+			 }
+		   }
+			
+		 }                                    
+		
+		
+		
 		printf("\nTRUE");
+		
+		printf("\n[");
+	    for(i=0;i<n;i++){
+		   printf("[");
+		   for(j=0;j<n;j++){
+		   	printf("%d",matrix[i][j]);
+			if(j<n-1){
+				printf(",");
+			}
+		}
+	    	printf("]");
+		if(i<n-1){
+			printf(",\n");
+		}
+	  }
+	     printf("]");
+		
 	}
 	
 	
